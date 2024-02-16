@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejercicio 3</title>
+  </head>
+
+  <body>
+    <div>
+      <div>
+        <h2>Resultado: <span class="resultado"></span></h2>
+        <div>
+          <div>
+            <div>
+              <label for="">Valor 1</label>
+              <input id="valor1" type="text" />
+            </div>
+            <div>
+              <label for="">Valor 2</label>
+              <input id="valor2" type="text" />
+            </div>
+            <div style="display: flex">
+              <button id="btn-sumar" type="button">Sumar</button>
+              <button id="btn-restar" type="button">Restar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Escríbe aquí tu código
+
+      let botonSuma = document.getElementById("btn-sumar");
+      let botonResta = document.getElementById("btn-restar");
+      let primerValor = document.getElementById("valor1");
+      let segundoValor = document.getElementById("valor2");
+      let resultadoElemento = document.querySelector(".resultado");
+
+      function sumar() {
+        let resultado =
+          parseFloat(primerValor.value) + parseFloat(segundoValor.value);
+        mostrarResultado(resultado);
+      }
+
+      function restar() {
+        let resultado =
+          parseFloat(primerValor.value) - parseFloat(segundoValor.value);
+        mostrarResultado(resultado);
+      }
+
+      function mostrarResultado(valor) {
+        resultadoElemento.textContent = valor;
+        if (valor <= 0) {
+          resultadoElemento.textContent = 0;
+        }
+      }
+
+      botonSuma.addEventListener("click", sumar);
+      botonResta.addEventListener("click", restar);
+    </script>
+  </body>
+</html>

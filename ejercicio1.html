@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejercicio 1</title>
+  </head>
+
+  <body>
+    <div>
+      <div style="width: 40%; margin: 0 auto">
+        <h2>Escríbenos !!!</h2>
+        <div class="resultado" style="color: green; font-style: italic"></div>
+        <form id="formulario">
+          <div>
+            <div style="display: flex; flex-direction: column">
+              <label> Nombre completo </label>
+              <input id="nombre" type="text" />
+              <p class="errorNombre" style="color: red; font-style: italic"></p>
+            </div>
+            <div style="display: flex; flex-direction: column">
+              <label> Asunto </label>
+              <input id="asunto" type="text" />
+              <p class="errorAsunto" style="color: red; font-style: italic"></p>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column">
+            <label> Mensaje </label>
+            <textarea id="mensaje"></textarea>
+            <p class="errorMensaje" style="color: red; font-style: italic"></p>
+          </div>
+          <div>
+            <button id="botton" type="submit">Envíar mensaje</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      // Escríbe aquí tu código
+
+      let boton = document.getElementById("botton");
+      boton.addEventListener("click", validar);
+
+      function validar() {
+        event.preventDefault();
+
+        let nombre = document.querySelector("#nombre").value;
+        let nombreErrado = document.querySelector(".errorNombre");
+        let asunto = document.querySelector("#asunto").value;
+        let asuntoErrado = document.querySelector(".errorAsunto");
+        let mensaje = document.querySelector("#mensaje").value;
+        let mensajeErrado = document.querySelector(".errorMensaje");
+        let mensajeExitoso = document.querySelector(".resultado");
+
+        regexTodos = /[A-Za-z]/;
+
+        if (
+          regexTodos.test(nombre) &&
+          regexTodos.test(asunto) &&
+          regexTodos.test(mensaje)
+        ) {
+          mensajeExitoso.textContent = "Mensaje enviado con éxito !!!";
+        }
+
+        if (!regexTodos.test(nombre)) {
+          nombreErrado.textContent = "El nombre es requerido.";
+        }
+
+        if (!regexTodos.test(asunto)) {
+          asuntoErrado.textContent = "El asunto es requerido.";
+        }
+
+        if (!regexTodos.test(mensaje)) {
+          mensajeErrado.textContent = "El mensaje es requerido.";
+        }
+      }
+    </script>
+  </body>
+</html>
